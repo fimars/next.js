@@ -134,6 +134,12 @@ export default async function build(dir: string, conf = null): Promise<void> {
   }
 
   const mappedPages = createPagesMapping(pagePaths, config.pageExtensions)
+  console.log('---------------------------------------');
+  console.log(mappedPages);
+  console.log(config.target);
+  console.log(buildId);
+  console.log(config);
+  console.log('---------------------------------------');
   const entrypoints = createEntrypoints(
     mappedPages,
     config.target,
@@ -141,6 +147,7 @@ export default async function build(dir: string, conf = null): Promise<void> {
     /* dynamicBuildId */ selectivePageBuilding,
     config
   )
+  console.log(entrypoints);
   const configs = await Promise.all([
     getBaseWebpackConfig(dir, {
       debug,
